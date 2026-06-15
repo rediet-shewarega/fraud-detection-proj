@@ -1,0 +1,30 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+      - interim1-only
+  pull_request:
+    branches:
+      - main
+      - interim1-only
+
+jobs:
+  basic-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Basic project structure check
+        run: |
+          test -f README.md
+          test -f requirements.txt
+          test -d notebooks
+          test -d src
+          test -d tests
+          test -f notebooks/eda-fraud-data.ipynb
+          test -f notebooks/eda-creditcard.ipynb
+          test -f notebooks/feature-engineering.ipynb
