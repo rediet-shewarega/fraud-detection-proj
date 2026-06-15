@@ -9,3 +9,4 @@ ipykernel
 xgboost
 shap
 joblib
+shap
